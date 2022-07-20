@@ -1,0 +1,25 @@
+# flask requirement.txt
+Flask==2.1.0
+gevent==20.9.0
+h5py==3.1.0
+numpy==1.22.3
+Pillow==8.3.2
+Werkzeug==2.0.1
+
+# paddle requirements.txt
+tqdm
+typeguard ; python_version >= '3.4'
+visualdl>=2.1.0 ; python_version <= '3.7'
+opencv-python
+PyYAML
+shapely
+scipy
+terminaltables
+Cython
+pycocotools
+setuptools>=42.0.0
+lap
+sklearn
+motmetrics
+openpyxl
+protobuf==3.20.* # in case of paddle import error

@@ -1,0 +1,38 @@
+mode: paddle
+draw_threshold: 0.5
+metric: COCO
+use_dynamic_shape: false
+arch: YOLO
+min_subgraph_size: 3
+Preprocess:
+- interp: 2
+  keep_ratio: false
+  target_size:
+  - 640
+  - 640
+  type: Resize
+- is_scale: true
+  mean:
+  - 0.485
+  - 0.456
+  - 0.406
+  std:
+  - 0.229
+  - 0.224
+  - 0.225
+  type: NormalizeImage
+- type: Permute
+label_list:
+- pig
+
+# add
+batch_size: 1
+cpu_threads: 4
+enable_mkldnn: True
+enable_mkldnn_bfloat16: False
+threshold: 0.5
+output_dir: ./output_imgs
+# logging level, 1 for DEBUG, 2 for INFO, 3 for WARNING, 4 for ERROR
+log_level: "1"
+
+debug: False
