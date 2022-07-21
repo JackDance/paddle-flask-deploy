@@ -458,7 +458,7 @@ def visualize(image_list, result, labels, output_dir='output/', threshold=0.5):
         # print("save result to: " + out_path)
 
 
-def swineCounting_infer():
+def main():
     paddle.enable_static()
     # 加载导出模型的配置文件infer_cfg.yml
     model_dir = r'./models/ppyolo'
@@ -486,4 +486,4 @@ def swineCounting_infer():
 
 if __name__ == '__main__':
     # 主函数
-    swineCounting_infer()
+    main()

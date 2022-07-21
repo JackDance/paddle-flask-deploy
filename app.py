@@ -93,10 +93,10 @@ if __name__ == '__main__':
     if yml_conf['debug']:
         # 开发阶段用
         logger.info("Now is the debugging phase!")
-        app.run(host='127.0.0.1', port=5002, debug=True)
+        app.run(host='0.0.0.0', port=5002, debug=True)
     else:
         # 部署阶段用
         # Serve the app with gevent
         logger.info("Now is the implement phase!")
-        http_server = WSGIServer(('127.0.0.1', 5002), app)
+        http_server = WSGIServer(('0.0.0.0', 5002), app)
         http_server.serve_forever()
