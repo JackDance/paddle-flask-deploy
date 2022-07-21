@@ -22,7 +22,7 @@ sys.path.insert(0, parent_path)
 from preprocess import preprocess, Resize, NormalizeImage, Permute, PadStride, LetterBoxResize, WarpAffine, Pad, decode_image
 
 from visualize import visualize_box_mask
-from utils import argsparser, Timer, get_current_memory_mb
+from utils import Timer, get_current_memory_mb
 
 
 
