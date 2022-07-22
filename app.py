@@ -103,6 +103,6 @@ if __name__ == '__main__':
     else:
         # 部署阶段用
         # Serve the app with gevent
-        logger.info("Now is the implement phase!")
+        logger.info("Now is the deployment phase!")
         http_server = WSGIServer(('0.0.0.0', 5002), app)
         http_server.serve_forever()

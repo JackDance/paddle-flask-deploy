@@ -35,4 +35,4 @@ output_dir: ./output_imgs
 # logging level, 1 for DEBUG, 2 for INFO, 3 for WARNING, 4 for ERROR
 log_level: "1"
 
-debug: False
+debug: True
