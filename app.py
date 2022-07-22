@@ -9,6 +9,7 @@
 """
 import os
 import sys
+import time
 
 # Flask
 from flask import Flask, request, render_template, Response, jsonify, redirect
@@ -77,13 +78,18 @@ def homepage():
 @app.route('/predict', methods=["GET", "POST"])
 def predict():
     if request.method == "POST":
+        results = {}
         # 数据（图像）获取，预处理，模型推理，结果后处理。(这几个步骤都在detector.predict_image函数中进行了集成)
         # predict from image
         img_list = [request.json['image_file']]
-        results = detector.predict_image(img_list)
-        logger.info("image {0} has detected {1} pigs".format(results['image_file'], results['count']))
-
-        # logger.info("visualizd image saved to: {}".format(os.path.split(results['image_file'][-1])))
+        t0 = time.perf_counter()
+        result = detector.predict_image(img_list)
+        t1 = time.perf_counter()
+        results['image_file'] = result['image_file']
+        results['count'] = result['count']
+        results['consumed_time'] = "{}s".format(t1-t0)
+        logger.info("image {0} has detected {1} pigs and consumed time is {2}s".format(result['image_file'], result['count'], (t1-t0)))
+        logger.info("visualized image saved to: {}".format('./output_imgs'))
         return jsonify(results)
     else:
         logger.warning("invalid request, abort.")

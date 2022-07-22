@@ -9,6 +9,7 @@ from functools import reduce
 import cv2
 import numpy as np
 import math
+import datetime
 import paddle
 from paddle.inference import Config
 from paddle.inference import create_predictor
@@ -256,7 +257,7 @@ class Detector(object):
 
         return coco_results
 
-    # 根据format_coco_results函数，实现计数功能, jack
+    # 根据format_coco_results函数，实现计数功能
     def bbox_counting(self, image_list, results):
         per_result = {
             'image_file': image_list,
@@ -448,9 +449,14 @@ def visualize(image_list, result, labels, output_dir='output/', threshold=0.5):
                                                   im_bboxes_num]
 
         start_idx += im_bboxes_num
+
         im = visualize_box_mask(
             image_file, im_results, labels, threshold=threshold)
-        img_name = os.path.split(image_file)[-1]
+        if isinstance(image_file, np.ndarray):
+            current_time = datetime.datetime.now().strftime("%Y-%m-%d-%H:%M:%S")
+            img_name = current_time + '.jpg'
+        else:
+            img_name = os.path.split(image_file)[-1]
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
         out_path = os.path.join(output_dir, img_name)

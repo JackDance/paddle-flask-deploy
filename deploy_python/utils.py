@@ -3,6 +3,7 @@ import logging
 import functools
 import sys
 import os
+import base64
 
 logger_initialized = {}
 
@@ -171,3 +172,32 @@ def get_current_memory_mb():
         meminfo = pynvml.nvmlDeviceGetMemoryInfo(handle)
         gpu_mem = meminfo.used / 1024. / 1024.
     return round(cpu_mem, 4), round(gpu_mem, 4), round(gpu_percent, 4)
+
+def img2base64(image_file):
+    """
+        Convert image to base64 string
+        """
+    with open(image_file, 'rb') as f:
+        im_bytes = f.read()
+    img_str = base64.b64encode(im_bytes).decode('utf-8')
+    return img_str
+
+def is_base64_code(s):
+    '''Check s is Base64.b64encode'''
+    if not isinstance(s ,str) or not s:
+        raise ValueError("params s not string or None")
+
+    _base64_code = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+                    'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+                    'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a',
+                    'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+                    'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+                    't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1',
+                    '2', '3', '4','5', '6', '7', '8', '9', '+',
+                    '/', '=' ]
+
+    # Check base64 OR codeCheck % 4
+    code_fail = [ i for i in s if i not in _base64_code]
+    if code_fail or len(s) % 4 != 0:
+        return False
+    return True
