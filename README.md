@@ -79,7 +79,7 @@ INFO 2022-07-22 14:11:56,510 app.py:101] Now is the debugging phase!
 
 ## 5. Run with Docker
 
-### 5.1 First, clone the repo
+### 5.1 Clone the repo
 ```
 git clone https://github.com/JackDance/paddle-flask-deploy
 cd paddle-flask-deploy
