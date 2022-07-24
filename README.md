@@ -32,12 +32,17 @@ paddle-flask-deploy
 conda create -n paddle-flask python=3.7
 conda activate paddle-flask
 ```
-4.1.2 克隆本仓库
+4.1.2 安装cpu版本的paddlepaddle
+```
+python3 -m pip install paddlepaddle--2.3.0 -i https://mirrors.baidu.com/pypi/simple
+```
+
+4.1.3 克隆本仓库
 
 ```
 git clone https://github.com/JackDance/paddle-flask-deploy.git
 ```
-4.1.3 安装requirement.txt
+4.1.4 安装requirement.txt
 
 将路径切换到项目下，安装所需依赖
 
