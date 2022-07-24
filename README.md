@@ -34,7 +34,7 @@ conda activate paddle-flask
 ```
 4.1.2 安装cpu版本的paddlepaddle
 ```
-python3 -m pip install paddlepaddle--2.3.0 -i https://mirrors.baidu.com/pypi/simple
+python3 -m pip install paddlepaddle==2.3.0 -i https://mirrors.baidu.com/pypi/simple
 ```
 
 4.1.3 克隆本仓库
