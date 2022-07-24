@@ -3,8 +3,6 @@ __pycache__
 */__pycache__
 
 
-# infer image folder
-test_imgs
 # log file
 log.log
 # visualizd image folder
